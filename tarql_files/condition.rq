@@ -7,13 +7,13 @@ prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 CONSTRUCT {
     ?condition ex:name ?name_condition;
                ex:indexedIn ?source;
-               ex:treatsBy ?drug. i have to put treatment.csv on the tarql command to crate rdf graph
+              
 }
 WHERE {
     # Create an URI for each condition or pathology base on the column "id"
     BIND(iri(?id) as ?condition)
     BIND(xsd:string(?name) as ?name_condition)
     BIND(iri(CONCAT("http://example.com/id_source/", ?source_id)) as ?source)
-    BIND(iri(CONCAT("https://go.drugbank.com/drugs/", ?drug_id)) as ?drug)
+    
 
 }
