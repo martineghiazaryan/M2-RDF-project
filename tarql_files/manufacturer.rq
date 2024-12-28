@@ -1,0 +1,13 @@
+# manufacturer.rq
+
+base <http://example.com/id_manufacturer/>
+prefix ex:<http://example.com/>
+prefix xsd:<http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+    ?manufacturer ex:name ?name_manufacturer;
+}
+WHERE {
+    BIND(iri(?id) as ?manufacturer)
+    BIND(xsd:string(?name) as ?name_manufacturer)
+}

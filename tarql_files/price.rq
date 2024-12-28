@@ -1,0 +1,20 @@
+#price.rq
+
+base <http://example.com/id_price/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix ex:<http://example.com/>
+prefix xsd:<http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+    ?cost  ex:setForProduct ?product; 
+            ex:inStore ?store;
+            a ?type;
+            ex:hasPrice ?price.
+}
+WHERE {
+    BIND(iri(?id) as ?cost)
+    BIND(iri(CONCAT("http://example.com/id_product/", ?product_id)) as ?product)
+    BIND(iri(CONCAT("http://example.com/id_store/", ?store)) as ?store)
+    BIND(xsd:string(?type) as ?type)
+    BIND(xsd:integer(?price) as ?price)
+}

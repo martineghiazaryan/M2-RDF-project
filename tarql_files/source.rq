@@ -1,0 +1,16 @@
+#source.rq
+
+base <http://example.com/id_source/>
+prefix ex:<http://example.com/>
+prefix xsd:<http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+    ?source ex:name ?name_source;
+            ex:url ?url_source.
+}
+WHERE {
+    #Create an URI for each source base on the column id
+    BIND(iri(?id) as ?source)
+    BIND(xsd:string(?name) as ?name_source)
+    BIND(xsd:anyURI(?url) as ?url_source)
+}

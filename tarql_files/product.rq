@@ -1,0 +1,24 @@
+#product.rq
+
+base <http://example.com/id_product/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix ex:<http://example.com/>
+prefix xsd:<http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+    ?product ex:name ?name_product;
+             ex:indexedIn ?source; 
+             ex:derivedFrom ?drug;
+             ex:manufacturedBy ?manufacturer;
+             a ?type;
+             ex:hasReviews ?reviews.
+}
+WHERE {
+    BIND(iri(?id) as ?product)
+    BIND(xsd:string(?name) as ?name_product)
+    BIND(iri(CONCAT("http://example.com/id_source/", ?source_id)) as ?source)
+    BIND(iri(CONCAT("https://go.drugbank.com/drugs/", ?drug_id)) as ?drug)
+    BIND(iri(CONCAT("http://example.com/id_manufacturer/", ?manufacturer)) as ?manufacturer)
+    BIND(xsd:string(?type) as ?type)
+    BIND(xsd:integer(?n_reviews) as ?reviews)
+}

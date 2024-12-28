@@ -1,0 +1,13 @@
+#store.rq
+
+base <http://example.com/id_store/>
+prefix ex:<http://example.com/>
+prefix xsd:<http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+    ?store ex:name ?name_store;
+}
+WHERE {
+    BIND(iri(?id) as ?store)
+    BIND(xsd:string(?name) as ?name_store)
+}
