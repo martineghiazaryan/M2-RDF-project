@@ -1,15 +1,16 @@
 #drug.rq
 
-base <https://go.drugbank.com/drugs/> 
+prefix drug:<https://go.drugbank.com/drugs/> 
+prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
-    ?drug ex:name ?name_drug.
-          
+    ?drug ex:name ?name_drug;
+          a ex:Drug.
 }
 WHERE {
     # Create an URI for each drug base on the column "id"
-    BIND(iri(?id) as ?drug)
+    BIND(iri(CONCAT("https://go.drugbank.com/drugs/",?id)) as ?drug)
     BIND(xsd:string(?name) as ?name_drug)
 }

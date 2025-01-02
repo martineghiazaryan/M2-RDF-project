@@ -1,6 +1,7 @@
 # treatment.rq
 
-base <http://example.com/id_condition/>
+prefix cdt:<http://example.com/id_condition/>
+prefix drug:<https://go.drugbank.com/drugs/> 
 prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 
@@ -8,7 +9,7 @@ CONSTRUCT {
     ?condition ex:treatsBy ?drug. 
 }
 WHERE {
-    BIND(iri(?condition_id) as ?condition)
+    BIND(iri(CONCAT("http://example.com/id_condition/", ?condition_id)) as ?condition)
     BIND(iri(CONCAT("https://go.drugbank.com/drugs/", ?drug_id)) as ?drug)
 
 }

@@ -1,6 +1,7 @@
 #price.rq
 
-base <http://example.com/id_product/>
+prefix prodt: <http://example.com/id_product/>
+prefix store: <http://example.com/id_store/>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
@@ -11,7 +12,7 @@ CONSTRUCT {
              ex:costs ?price.
 }
 WHERE {
-    BIND(iri(?product_id) as ?product)
+    BIND(iri(CONCAT("http://example.com/id_product/",?product_id)) as ?product)
     BIND(iri(CONCAT("http://example.com/id_store/", ?store_id)) as ?store)
     BIND(xsd:string(?type) as ?type)
     BIND(xsd:integer(?price) as ?price)

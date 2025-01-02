@@ -1,6 +1,6 @@
 #interaction.rq
 
-base <https://go.drugbank.com/drugs/> 
+prefix drug:<https://go.drugbank.com/drugs/> 
 prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix ex:<http://example.com/>
 
@@ -12,8 +12,8 @@ CONSTRUCT {
 }
 WHERE {
     # Create an URI for each condition or pathology base on the column "id"
-    BIND(iri(?source_drug_id) as ?drug1)
-    BIND(iri(?target_drug_id) as ?drug2)
+    BIND(iri(CONCAT("https://go.drugbank.com/drugs/",?source_drug_id)) as ?drug1)
+    BIND(iri(CONCAT("https://go.drugbank.com/drugs/",?target_drug_id)) as ?drug2)
 
     
 }

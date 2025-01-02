@@ -1,13 +1,16 @@
 #store.rq
 
-base <http://example.com/id_store/>
+prefix store:<http://example.com/id_store/>
+prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
     ?store ex:name ?name_store;
+           a ex:Store.
+
 }
 WHERE {
-    BIND(iri(?id) as ?store)
+    BIND(iri(CONCAT("http://example.com/id_store/",?id)) as ?store)
     BIND(xsd:string(?name) as ?name_store)
 }

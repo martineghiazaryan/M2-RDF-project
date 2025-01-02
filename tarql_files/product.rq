@@ -1,6 +1,9 @@
 #product.rq
 
-base <http://example.com/id_product/>
+prefix prodt: <http://example.com/id_product/>
+prefix src: <http://example.com/id_source/>
+prefix drug:<https://go.drugbank.com/drugs/> 
+prefix manu:<http://example.com/id_manufacturer/>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
@@ -11,10 +14,11 @@ CONSTRUCT {
              ex:derivedFrom ?drug;
              ex:manufacturedBy ?manufacturer;
              a ?type;
-             ex:hasReviews ?reviews.
+             ex:hasReviews ?reviews;
+             a ex:Product.
 }
 WHERE {
-    BIND(iri(?id) as ?product)
+    BIND(iri(CONCAT("http://example.com/id_product/",?id)) as ?product)
     BIND(xsd:string(?name) as ?name_product)
     BIND(iri(CONCAT("http://example.com/id_source/", ?source_id)) as ?source)
     BIND(iri(CONCAT("https://go.drugbank.com/drugs/", ?drug_id)) as ?drug)

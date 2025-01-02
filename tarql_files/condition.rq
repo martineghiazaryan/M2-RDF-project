@@ -1,19 +1,21 @@
 #condition.rq
 
-base <http://example.com/id_condition/>
+prefix cdt:<http://example.com/id_condition/> # i cannot use base cause there's a lot of file and i'll combined them at the end
+prefix rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
+prefix src:<http://example.com/id_source/>
 
 CONSTRUCT {
     ?condition ex:name ?name_condition;
                ex:indexedIn ?source;
+               a ex:Pathology.
               
 }
 WHERE {
     # Create an URI for each condition or pathology base on the column "id"
-    BIND(iri(?id) as ?condition)
+    BIND(iri(CONCAT("http://example.com/id_condition/", ?id)) as ?condition)
     BIND(xsd:string(?name) as ?name_condition)
     BIND(iri(CONCAT("http://example.com/id_source/", ?source_id)) as ?source)
     
-
 }
