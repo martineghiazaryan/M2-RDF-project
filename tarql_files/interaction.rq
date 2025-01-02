@@ -6,8 +6,8 @@ prefix ex:<http://example.com/>
 
 CONSTRUCT {
     ?drug1 ex:interactWith ?drug2;
-           a "source_drug".
-    ?drug2 a "target_drug".
+           a ex:SourceDrug.
+    ?drug2 a ex:TargetDrug.
 
 }
 WHERE {
