@@ -6,8 +6,8 @@ prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
-    ?store ex:name ?name_store;
-           a ex:Store.
+    ?store ex:name ?name_store.
+        
 
 }
 WHERE {
