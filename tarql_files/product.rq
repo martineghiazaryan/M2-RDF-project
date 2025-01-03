@@ -14,8 +14,8 @@ CONSTRUCT {
              ex:derivedFrom ?drug;
              ex:manufacturedBy ?manufacturer;
              a ?type;
-             ex:hasReviews ?reviews;
-             a ex:Product.
+             ex:hasReviews ?reviews.
+            
 }
 WHERE {
     BIND(iri(CONCAT("http://example.com/id_product/",?id)) as ?product)

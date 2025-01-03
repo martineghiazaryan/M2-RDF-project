@@ -6,8 +6,7 @@ prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
-    ?drug ex:name ?name_drug;
-          a ex:Drug.
+    ?drug ex:name ?name_drug.
 }
 WHERE {
     # Create an URI for each drug base on the column "id"

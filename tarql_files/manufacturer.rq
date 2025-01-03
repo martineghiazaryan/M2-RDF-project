@@ -6,8 +6,8 @@ prefix ex:<http://example.com/>
 prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
-    ?manufacturer ex:name ?name_manufacturer;
-                  a ex:Manufacturer.
+    ?manufacturer ex:name ?name_manufacturer.
+                  
 }
 WHERE {
     BIND(iri(CONCAT("http://example.com/id_manufacturer/", ?id)) as ?manufacturer)

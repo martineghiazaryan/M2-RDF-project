@@ -8,8 +8,8 @@ prefix src:<http://example.com/id_source/>
 
 CONSTRUCT {
     ?condition ex:name ?name_condition;
-               ex:indexedIn ?source;
-               a ex:Pathology.
+               ex:indexedIn ?source.
+              
               
 }
 WHERE {
