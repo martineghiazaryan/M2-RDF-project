@@ -1,0 +1,31 @@
+@prefix drug:  <https://go.drugbank.com/drugs/> .
+@prefix cdt:  <http://example.com/id_condition/> .
+@prefix manu:  <http://example.com/id_manufacturer/> .
+@prefix src:  <http://example.com/id_source/> .
+@prefix prodt:  <http://example.com/id_product/> .
+@prefix store:  <http://example.com/id_store/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex:  <http://example.com/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+# Deductions based on types (rdf:type)
+
+ex:TargetDrug rdfs:subClassOf ex:Drug .
+ex:SargetDrug rdfs:subClassOf ex:Drug .
+
+#Relationships between drugs (ex:interactWith, ex:treatsBy, ex:derivedFrom)
+
+ex:interactsWith rdfs:domain ex:Drug ;
+                rdfs:range ex:Drug .
+ex:treatsBy rdfs:domain ex:Drug ;
+            rdfs:range ex:Pathology .
+ex:derivedFrom rdfs:domain ex:Product ;
+              rdfs:range ex:Drug .
+
+ex:costs rdfs:domain ex:Product.
+
+ex:manufacturedBy rdfs:range ex:Manufacturer.
+
+ex:indexedIn rdfs:range ex:Source.
+
+ex:sellsInStore rdfs:range ex:Store.
