@@ -7,8 +7,8 @@ prefix xsd:<http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
     ?source ex:name ?name_source;
-            ex:url ?url_source;
-            a ex:Source.
+            ex:url ?url_source.
+            
 
 }
 WHERE {
