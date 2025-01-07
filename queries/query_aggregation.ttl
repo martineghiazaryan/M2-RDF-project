@@ -1,0 +1,11 @@
+PREFIX ex: <http://example.org/ex#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?product ?store ?manufacturerName (MAX(xsd:integer(?cost)) AS ?maxPrice)
+WHERE {
+  ?product ex:sellsInStore ?store ;
+           ex:costs ?cost ;
+           ex:manufacturedBy ?manufacturer .
+  ?manufacturer ex:name ?manufacturerName .
+}
+GROUP BY ?product ?store ?manufacturerName

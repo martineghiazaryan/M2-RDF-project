@@ -1,0 +1,11 @@
+PREFIX ex: <http://example.com/>
+
+SELECT ?product ?product_name  ?manufacturer ?reviews
+WHERE {
+    ?product ex:manufacturedBy ?manufacturer;
+             ex:name ?product_name. 
+    OPTIONAL {
+        ?product ex:hasReviews ?reviews.
+    }
+}
+LIMIT 5

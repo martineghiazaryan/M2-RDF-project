@@ -1,0 +1,13 @@
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?drug ?drugName ?externalInfo
+WHERE {
+  SERVICE <https://query.wikidata.org/sparql> {
+    ?drug wdt:P31 wd:Q12140 ;  # Entité de type médicament
+          rdfs:label ?drugName .  # Nom du médicament
+    FILTER (LANG(?drugName) = "en")
+  }
+  ?drug wdt:P973 ?externalInfo .  # Information externe, si disponible (ex: URL, etc.)
+}

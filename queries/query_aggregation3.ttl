@@ -1,0 +1,11 @@
+PREFIX ex: <http://example.org/ex#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?productName (AVG(xsd:integer(?cost)) AS ?averageCost)
+WHERE {
+  ?product ex:costs ?cost;
+           ex:name ?productName;
+           ex:sellsInStore ?store.
+}
+GROUP BY ?productName #?store
+LIMIT 5

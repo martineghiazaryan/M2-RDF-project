@@ -1,0 +1,11 @@
+# This query fetches all drugs that are connected via interactions through any path of arbitrary length.
+PREFIX ex:<http://example.com/>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?sourceDrugName ?targetDrugName
+WHERE {
+    ?sourceDrug ex:name ?sourceDrugName;
+                ex:interactWith{2,3} ?targetDrug .
+    ?targetDrug ex:name ?targetDrugName.
+}
+LIMIT 5

@@ -1,0 +1,17 @@
+PREFIX ex: <http://example.com/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?productName (GROUP_CONCAT(DISTINCT ?storeName; SEPARATOR=", ") AS ?stores) (COUNT(DISTINCT ?condition) AS ?conditionsTreated)
+WHERE { 
+    ?condition ex:treatsBy ?drug .
+
+    # # Relations with conditions, product and store
+    ?product ex:derivedFrom ?drug ;
+             ex:sellsInStore ?store ;
+             ex:name ?productName .
+
+    ?store ex:name ?storeName .
+}
+GROUP BY ?product ?productName
+ORDER BY DESC(?conditionsTreated) 
+LIMIT 5

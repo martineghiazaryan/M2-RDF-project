@@ -1,0 +1,14 @@
+PREFIX ex: <http://example.org/ex#>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+
+SELECT DISTINCT ?drugName
+WHERE {
+  ?drug ex:name ?drugName .
+  ?product ex:derivedFrom ?drug .
+  FILTER NOT EXIST {
+    ?product ex:hasReviews ?reviews.
+    FILTER(xsd:integer(?reviews)<50)
+  }
+}
+LIMIT 5
